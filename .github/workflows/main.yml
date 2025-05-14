@@ -32,7 +32,7 @@ jobs:
       - uses: convictional/trigger-workflow-and-wait@v1.3.0
         with:
           owner: Agicon
-          repo: firstTryAction
+          repo: firstday
           github_token: ${{ secrets.G_ACCESS_TOKEN }}
           workflow_file_name: main.yml
           ref: main
