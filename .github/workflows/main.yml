@@ -1,15 +1,43 @@
+# name: Deploy
+# on:
+#   workflow_dispatch:
+#   push:
+#     branches:
+#       - master
+# jobs:
+#   build:
+#     name: Run API
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Build API
+#         run: |
+#           echo "Build API"
+#           sleep 10s
+
+
 name: Deploy
 on:
-  workflow_dispatch:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
-    name: Run API
+    name: Run Web App
     runs-on: ubuntu-latest
     steps:
-      - name: Build API
+      - name: Build Web App
         run: |
-          echo "Build API"
+          echo "Build Web App"
           sleep 10s
+      - uses: convictional/trigger-workflow-and-wait@v1.3.0
+        with:
+          owner: Agicon
+          repo: firstTryAction
+          github_token: ${{ secrets.G_ACCESS_TOKEN }}
+          workflow_file_name: main.yml
+          ref: main
+      - name: Deploy Web App
+        run: |
+          echo "Deploy Web App"
+          sleep 10s
+
